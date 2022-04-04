@@ -12,7 +12,7 @@ HoosNotes is no longer under development. As such, certain features may be depre
 
 ## Credits
 
-HoosHealthTracker is a team project that was developed by Keith Butler, Elias Posner, Kathryn Armstrong, Roman Kaker, and Genna Schwarz.
+HoosNotes is a team project that was developed by Keith Butler, Elias Posner, Kathryn Armstrong, Roman Kaker, and Genna Schwarz.
 
 
 ## License
