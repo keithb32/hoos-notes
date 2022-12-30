@@ -1,0 +1,11 @@
+Django
+djangorestframework==3.11.0
+gunicorn
+django-heroku
+django-allauth
+django-rest-auth
+django-bootstrap-v5 
+django-multiselectfield
+django-cleanup
+twilio==6.10.1
+python-dotenv

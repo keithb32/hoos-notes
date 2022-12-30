@@ -1,0 +1,101 @@
+<!--Template for testing social authentication adapted from Muhd Rahiman, 2/27/2021
+    https://dev.to/mdrhmn/django-google-authentication-using-django-allauth-18f8-->
+
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<html>
+<head>
+    <style>
+        body {
+            margin-bottom:  25px;
+            background: rgb(228,231,235);
+            background: linear-gradient(0deg, rgba(228,231,235,1) 0%, rgba(149,162,191,1) 49%, rgba(66,95,142,0.9980988593155894) 100%);
+
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+        <div class="collapse navbar-collapse justify-content-center" id="navDropdown">
+            <a style="color: orange; margin-right: 0px;" class="navbar-brand" >Hoos</a><a class="navbar-brand">Notes</a>
+            <ul class="navbar-nav">
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/todo">To-do</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/calendar">Calendar</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/rooms"> Chat </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Classes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="classDropdown">
+                            <a class="dropdown-item" href="/listclasses">Class List</a>
+                        <a class="dropdown-item" href="/createclass"> + Add Class</a>
+                        <a class="dropdown-item" href="/joinclass">+ Join Class</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}"> Log out </a>
+
+                <!--
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="#">Settings/Preferences</a>
+                        <a class="dropdown-item" href="#">Edit schedule</a>
+                        <a class="dropdown-item" href="#">Manage classes</a>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}"> Log out </a>
+                    </div>
+                </li>
+                -->
+                {% else %}
+                <footer class="text-center text-lg-start bg-light fixed-bottom">
+                    <div class="text-center p-4">
+                        © 2021 Copyright: Group A-20
+                    </div>
+                </footer>
+
+                {% endif %}
+            </ul>
+        </div>
+        
+    </nav>
+</header>
+
+    <div id="main_content">
+     {% block content %}{% endblock %}  
+    </div>
+<!--
+<footer class="text-center text-lg-start bg-light fixed-bottom">
+    <div class="text-center p-4">
+        © 2021 Copyright: Group A-20
+    </div>
+</footer>
+-->
+
+</body>
+</html>

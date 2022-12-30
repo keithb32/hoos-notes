@@ -1,0 +1,72 @@
+<!--Template for testing social authentication adapted from Muhd Rahiman, 2/27/2021
+    https://dev.to/mdrhmn/django-google-authentication-using-django-allauth-18f8-->
+{% extends "base.html" %}
+
+{% block content %}
+
+<center>
+<h1> </h1>
+<div class="mt-lg-4">
+
+<div class="container">
+    	<h3 class="text-center" style = "color: white;">Add a Class</h6>
+</div>
+
+<div class="mt-lg-4" style="width: fit-content;">
+
+{% if form.errors %}
+    <p class="text-warning"><strong>The class you wish to add already exists. Please join this class by looking for it through our <a class="link-warning" href="{% url 'join_student_classes' %}">Join Class</a> page.</strong></p>
+{% endif %}
+<form method="post">{% csrf_token %}
+    <!--{{ form.as_p }}-->
+    <div class="row">
+        <div class="col">
+            <label for="id_class_name" style = "color: white;">Class Name:</label>
+            <input class="form-control" id="id_class_name" type="text" name="class_name" maxlength="200" required>
+        </div>
+        
+        <div class="col">
+            <label for="id_instructor" style = "color: white;">Instructor:</label>
+            <input class="form-control" id="id_instructor" type="text" name="instructor" maxlength="200" required>
+        </div>
+        <div class="col">
+            <label for="id_location" style = "color: white;">Location:</label>
+            <input class="form-control" id="id_location" type="text" name="location" maxlength="200" required>
+        </div>
+            
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="id_start_time" style = "color: white;">Start Time:</label>
+                <input id="id_start_time" class="form-control" type="time" name="start_time" required>
+            </div>
+            <div class="col">
+                <label for="id_end_time" style = "color: white;">End Time:</label>
+                <input id="id_end_time" class="form-control" type="time" name="end_time" required>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col" style = "color: white;">
+                Days of the Week: &emsp;
+                {% for value, text in form.days_of_the_week.field.choices %}
+            
+                <input id="id_days_of_the_week_{{ forloop.counter0 }}" name="{{ form.days_of_the_week.name }}" type="checkbox" value="{{ value }}" {% if value in checked_days_of_the_week %} checked="checked"{% endif %}>
+                <label>{{ text }}</label>
+            
+                {% endfor %}
+            </div>
+        </div>
+    
+
+
+    
+
+    <br>
+
+    <input class="btn btn-success" type="submit" value="Save Class">
+</form>
+</center>
+{% endblock %}
+

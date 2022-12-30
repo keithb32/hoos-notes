@@ -1,0 +1,28 @@
+<!-- 
+  Base template for the calendar web page. Contains links to relevant stylesheets
+  Adapted from Hui Wen, 7/24/2018
+  URL: https://www.huiwenteo.com/normal/2018/07/24/django-calendar.html 
+-->
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <!-- Bootstrap CSS -->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  <title>Calendar</title>
+</head>
+
+<body>
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>

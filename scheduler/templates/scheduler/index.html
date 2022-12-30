@@ -1,0 +1,84 @@
+<!--Template for testing social authentication adapted from Muhd Rahiman, 2/27/2021
+    https://dev.to/mdrhmn/django-google-authentication-using-django-allauth-18f8-->
+{% extends "base.html" %}
+{% load socialaccount %}
+
+<html>
+
+<head>
+    <title>Google Registration</title>
+</head>
+
+
+<body>
+    {% block content %}
+
+    {% if user.is_authenticated %}
+    <br>
+
+        <div class="col d-flex justify-content-center">
+            <div class = 'card shadow w-50 border-dark'>
+                <div class = "card-body">
+                <h4 class = 'text-center display-6'> Welcome to HoosNotes, {{ user.username }}! </h4>
+                
+                <p class="text-center lead pt-1" style="font-size: 18px;">
+
+                <strong>HoosNotes</strong> is a web application that allows students to plan and organize classes.
+                <br>
+                Within <strong>HoosNotes</strong>, you'll find the following pages and their features:
+                
+                </p>
+                    
+                <h5 class="text-center"> Todo </h5>
+                <ul class="d-flex col justify-content-center" style="list-style:none;">
+                    <li> Add and remove text items from a personal to-do list </li>
+                </ul>
+
+                <h5 class="text-center"> Calendar </h5>
+                <ul class="d-flex col justify-content-center" style="list-style:none;">
+                    <li> Add and delete events displayed on a visual calendar </li>
+                </ul>
+
+                <h5 class="text-center"> Chat </h5>
+                <ul class="d-flex col justify-content-center" style="list-style:none;">
+                    <li> Join live chat rooms where you can talk to other users currently on HoosNotes </li>
+                </ul>
+
+                <h5 class="text-center"> My Classes </h5>
+                
+                <ul class="text-center" style="list-style: none;">
+                    <li> Create and join classes </li>
+                    <li> Upload notes for each class and see who else is enrolled</li>
+                </ul>
+
+                </div>
+            </div>
+        </div>
+    
+    {% else %}
+    
+    <div class="d-flex justify-content-center h-75 align-items-center">
+        <div class="jumbotron my-auto">
+        <div class="card shadow" style="border-radius: 1rem;">
+          <div class="card-body text-center">
+
+            <h3 class="mb-4">Welcome to HoosNotes!</h3>
+
+            <h5>To create an account or sign in with an existing one, please click: </h5>
+            <a class="btn btn-lg btn-block btn-outline-success" href="{% provider_login_url 'google' %}" type="submit">Log in with Google</a>
+
+
+          </div>
+        </div>
+        </div>
+    </div>
+
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+    {% endblock %}
+
+</body>
+
+</html>
+

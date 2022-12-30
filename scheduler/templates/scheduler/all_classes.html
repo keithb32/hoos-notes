@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% if join_list_of_classes %}
+    <h3 class="text-left" style = "color: white;"><br> List of all classes</h3>
+    <h6 class="text-left" style = "color: white;" > Click on a blue link to see class information before joining.</h6>
+
+    {% for class in join_list_of_classes %}
+		
+  		<div class="col-lg-3 d-flex align-items-stretch" style = "padding: 1em">
+            <div class = 'card shadow w-100 border-dark'>
+            	<div class = "card-body">
+		
+		<h4> 
+		<a class="link-primary" href="{% url 'join_class_detail' class.id %}"> 
+			{{class.class_name}}
+		</a> 
+		</h4> 
+
+		<p class="text-dark"> 
+			Instructor: {{class.instructor}} <br> Time: {{class.start_time}} - {{class.end_time}} <br> Location: {{class.location}} <br> Days: {{ class.days_of_the_week }}
+       	</p>
+       </div>
+   </div>
+</div>
+       
+    {% endfor %}
+  
+{% else %} 
+
+    <h3 class="text-light"> <br> No Classes are available.</h3>  
+{% endif %}
+</div>
+</div>
+{% endblock %}

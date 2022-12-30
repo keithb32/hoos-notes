@@ -1,0 +1,32 @@
+<!-- 
+  Template for event submission form
+  Adapted from Hui Wen, 7/29/2018
+  URL: https://www.huiwenteo.com/normal/2018/07/29/django-calendar-ii.html
+-->
+
+{% extends "base.html" %}
+{% block title %}Event{% endblock %}
+
+{% block content %}
+
+<div class="clearfix">
+  <a class="btn btn-outline-light left m-2" href="{% url 'calendar' %}"> Calendar </a>
+</div>
+
+<div class="col d-flex justify-content-center text-white">
+<form method="post">
+  {% csrf_token %}
+  <table class="form form-table" style = "color: white; border: white;">
+    {{ form }}
+    <!-- Delete functionality added by BenjaminAm on Github, https://github.com/huiwenhw/django-calendar/issues/10 -->
+    <tr class="text-center">
+      <td colspan="2">
+        <br>
+        <button type="submit" name="delete" class="btn btn-danger right"> Delete </button>
+        <button type="submit" name="save" class="btn btn-dark right"> Submit </button>
+      </td>
+    </tr>
+  </table>
+</form>
+</div>
+{% endblock %}

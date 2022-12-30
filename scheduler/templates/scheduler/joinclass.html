@@ -1,0 +1,73 @@
+<!--Template for testing social authentication adapted from Muhd Rahiman, 2/27/2021
+    https://dev.to/mdrhmn/django-google-authentication-using-django-allauth-18f8-->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+
+<h3 class="text-left" style = "color: white;"><br> Join Classes</h3>
+  <div class="col-lg-6 d-flex align-items-stretch" style = "padding: 1em">
+            <div class = 'card shadow w-100 border-dark'>
+            	<div class = "card-body">
+		<center>
+		<h4> 
+					<br>
+
+			<br>
+			Search for a class by instructor.			
+			<br>
+			<br>
+			<form action="{% url 'class_search' %}" method="post">
+				{% csrf_token %}
+
+				<div class="text-center">
+					<input class="form-control-sm" type="text" name="instructor" placeholder="Instructor" required>
+				</div>
+
+				<br>
+				<div class="text-center">
+					<button class="btn btn-primary btn-md btn-block" type="submit">Search</button> 
+				</div>
+				
+
+
+			</form>
+			
+			
+			<br>
+			<br>
+			<br>
+		</h4> 
+		</center>
+		</div>
+				</div>
+		</div>
+
+
+<div class="col-lg-6 d-flex align-items-stretch" style = "padding: 1em">
+            <div class = 'card shadow w-100 border-dark'>
+            	<div class = "card-body">
+			<center>
+
+	<h4> 
+	
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		See the list of <a href="{% url 'all_classes' %}">all classes</a>		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	</h4> 
+	</center>
+		</div>
+				</div>
+		</div>
+
+		   
+{% endblock %}

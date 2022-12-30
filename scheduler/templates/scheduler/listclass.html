@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if list_of_classes %}
+
+
+
+<div class="container">
+<h3 class="text-left" style = "color: white;" > <br> Your Classes</h3>
+<h6 class="text-left" style = "color: white;" > Click on a blue link to see class information.</h6>
+
+		
+<div class="row">
+  <div class="col-lg-3 d-flex align-items-stretch" style = "padding: 1em">
+            <div class = 'card shadow w-100 border-dark'>
+            	<div class = "card-body">
+	
+		
+			<h5>
+			<br>
+
+			<p class="text-left" style = "color: black;" > Need to join another class?</p>
+
+			<a class="link-primary" href="{% url 'create_student_class'%}">
+			Create a new class + </a>
+			<br>
+			<br>
+
+			<p class="text-dark" > or </p>
+
+			<a class="link-primary" href="{% url 'join_student_classes'%}">
+			Join a class + </a> 
+						<br>
+			<br>
+
+		</h5>
+		
+		
+		
+				</div>
+			</div>
+</div>
+
+
+       
+
+    {% for class in list_of_classes %}
+		<div class="col-lg-3 d-flex align-items-stretch" style = "padding: 1em">
+            <div class = 'card shadow w-100 border-dark'>
+            	<div class = "card-body">
+	
+
+		<h4> 
+		<a class="link-primary" href="{% url 'class_detail' class.id %}"> 
+			{{class.class_name}}
+		</a> 
+		</h4> 
+
+		<p class="text-dark"> 
+			Instructor: {{class.instructor}} <br> Time: {{class.start_time}} - {{class.end_time}} <br> Location: {{class.location}} <br> Days: {{ class.days_of_the_week }}
+            <br>
+			<br>
+			<form class = "text-center" action="{% url 'delete_student_class' class.id%}" method = "post">{% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-md btn-block">Leave Class</button>
+            </form>
+       	</p>
+       
+		
+				</div>
+			</div>
+</div>
+    {% endfor %}
+ </div>
+</div>
+
+{% else %}  
+	<div class="container">
+<h3 class="text-left" style = "color: white;" > <br> You currently do not have any classes</h3>
+		
+<div class="row">
+  <div class="col-lg-3 d-flex align-items-stretch" style = "padding: 1em">
+            <div class = 'card shadow w-100 border-dark'>
+            	<div class = "card-body">
+	
+		
+			<h5>
+			<br>
+
+			<p class="text-left" style = "color: black;" > Need to join a class?</p>
+
+			<a class="link-primary" href="{% url 'create_student_class'%}">
+			Create a new class + </a>
+			<br>
+			<br>
+
+			<p class="text-dark" > or </p>
+
+			<a class="link-primary" href="{% url 'join_student_classes'%}">
+			Join a class + </a> 
+						<br>
+			<br>
+
+		</h5>
+		
+		
+		
+				</div>
+			</div>
+</div>
+</div>
+{% endif %}
+{% endblock %}

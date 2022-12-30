@@ -1,0 +1,20 @@
+<!--
+  Template for displaying the chatrooms a user is in
+  Adapted from Kevin Ndung'u, 5/15/2018
+  URL: https://www.twilio.com/blog/2018/05/build-chat-python-django-applications-programmable-chat.html
+-->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col d-flex justify-content-center">
+{% for room in rooms %}
+<div class="card shadow text-center border-dark w-50" style="border-radius: 1rem; margin: 20px;">
+  <div class="card-body">
+    <h5 class="card-title">{{room.name}}</h5>
+    <p class="card-text">{{room.description}}</p>
+    <a href="/rooms/{{room.slug}}" target="_blank" class="btn btn-primary">Join room</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
